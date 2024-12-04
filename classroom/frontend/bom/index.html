@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hello</title>
+    <style>
+      .text-red {
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Hello</h1>
+    <p class="text-red"></p>
+    <script src="js/index.js"></script>
+    <script>
+      const name = prompt('Enter your name:');
+
+      const message = hello(name);
+
+      console.log(message);
+      // document.write(message);
+      // document.body.innerText = message;
+      // document.body.innerHTML = `<h1 class="text-red">${message}</h1>`;
+
+      const p = document.querySelector('p');
+      p.innerText = message;
+    </script>
+  </body>
+</html>
