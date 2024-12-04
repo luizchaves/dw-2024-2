@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>List</title>
+  </head>
+  <body>
+    <form>
+      <label for="list-size">List size:</label>
+      <input type="number" id="list-size" name="list-size" />
+      <button type="submit">Generate list</button>
+    </form>
+    <ul></ul>
+    <script>
+      function generateList(length) {
+        let items = '';
+
+        for (let i = 1; i <= length; i++) {
+          items += `<li>Item ${i}</li>`;
+        }
+
+        return items;
+      }
+
+      const ul = document.querySelector('ul');
+
+      const form = document.querySelector('form');
+
+      const input = document.querySelector('#list-size');
+
+      form.onsubmit = function (event) {
+        event.preventDefault();
+
+        const listSize = input.value;
+
+        ul.innerHTML = generateList(listSize);
+      };
+    </script>
+  </body>
+</html>
