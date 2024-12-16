@@ -1,11 +1,13 @@
+@domain=http://localhost:3000
+
 ### list hosts
-GET http://localhost:3000/hosts
+GET {{domain}}/hosts
 
 ### get a host
-GET http://localhost:3000/hosts/1
+GET {{domain}}/hosts/1
 
 ### create a host
-POST http://localhost:3000/hosts
+POST {{domain}}/hosts
 Content-Type: application/json
 
 {
@@ -14,7 +16,7 @@ Content-Type: application/json
 }
 
 ### update a host
-PUT http://localhost:3000/hosts/2242
+PUT {{domain}}/hosts/2242
 Content-Type: application/json
 
 {
@@ -23,4 +25,4 @@ Content-Type: application/json
 }
 
 ### delete a host
-DELETE http://localhost:3000/hosts/2242
+DELETE {{domain}}/hosts/2242
