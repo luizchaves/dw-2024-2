@@ -1,5 +1,18 @@
-@BASE_URL = http://localhost:3000
+@server = http://localhost:3000
 
-### GET /
+### hello/en
 
-GET {{BASE_URL}}/
+GET {{server}}/hello/en?name=Luiz
+
+### hello/pt
+
+GET {{server}}/hello/pt/Luiz
+
+### hello/es
+
+POST {{server}}/hello/es
+Content-Type: application/json
+
+{
+  "name": "Luiz"
+}

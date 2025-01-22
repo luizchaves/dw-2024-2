@@ -5,8 +5,24 @@ const app = express();
 
 app.use(morgan('tiny'));
 
-app.get('/', (req, res) => {
-  res.send('Hello World!');
+app.use(express.json());
+
+app.get('/hello/en', (req, res) => {
+  const name = req.query.name;
+
+  res.send(`Hello, ${name}!`);
+});
+
+app.get('/hello/pt/:name', (req, res) => {
+  const name = req.params.name;
+
+  res.send(`Olá, ${name}!`);
+});
+
+app.post('/hello/es', (req, res) => {
+  const name = req.body.name;
+
+  res.send(`¡Hola, ${name}!`);
 });
 
 app.listen(3000, () => {
