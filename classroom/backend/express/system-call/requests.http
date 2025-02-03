@@ -1,0 +1,17 @@
+@server=http://localhost:3000
+
+### Post Ping (with host param)
+
+POST {{server}}/ping?host=8.8.8.8
+
+### Post Ping (with count param)
+
+POST {{server}}/ping?host=8.8.8.8&count=3
+
+### Post Ping (bad params)
+
+POST {{server}}/ping?host=a.a.a.a
+
+### Post Ping (without params)
+
+POST {{server}}/ping
