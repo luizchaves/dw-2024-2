@@ -3,7 +3,7 @@
 
 ### Create a host
 # @name createHost
-POST {{server}}/hosts
+POST {{server}}/api/hosts
 Content-Type: application/json
 
 {
@@ -12,7 +12,7 @@ Content-Type: application/json
 }
 
 ### Create a host without name or address
-POST {{server}}/hosts
+POST {{server}}/api/hosts
 Content-Type: application/json
 
 {
@@ -20,21 +20,21 @@ Content-Type: application/json
 }
 
 ### Read hosts
-GET {{server}}/hosts
+GET {{server}}/api/hosts
 
 ### Read a host by name
-GET {{server}}/hosts?name=Google%20DNS
-# GET {{server}}/hosts?name=DNS
-# GET {{server}}/hosts?name=dns
+GET {{server}}/api/hosts?name=Google%20DNS
+# GET {{server}}/api/hosts?name=DNS
+# GET {{server}}/api/hosts?name=dns
 
 ### Read a host by id
-GET {{server}}/hosts/{{createdHostId}}
+GET {{server}}/api/hosts/{{createdHostId}}
 
 ### Read a host by id with invalid id
-GET {{server}}/hosts/x
+GET {{server}}/api/hosts/x
 
 ### Update a host
-PUT {{server}}/hosts/{{createdHostId}}
+PUT {{server}}/api/hosts/{{createdHostId}}
 Content-Type: application/json
 
 {
@@ -43,7 +43,7 @@ Content-Type: application/json
 }
 
 ### Update a host without name or address
-PUT {{server}}/hosts/{{createdHostId}}
+PUT {{server}}/api/hosts/{{createdHostId}}
 Content-Type: application/json
 
 {
@@ -51,7 +51,7 @@ Content-Type: application/json
 }
 
 ### Update a host with invalid id
-PUT {{server}}/hosts/x
+PUT {{server}}/api/hosts/x
 Content-Type: application/json
 
 {
@@ -60,7 +60,7 @@ Content-Type: application/json
 }
 
 ### Delete a host
-DELETE {{server}}/hosts/{{createdHostId}}
+DELETE {{server}}/api/hosts/{{createdHostId}}
 
 ### Delete a host with invalid id
-DELETE {{server}}/hosts/x
+DELETE {{server}}/api/hosts/x
