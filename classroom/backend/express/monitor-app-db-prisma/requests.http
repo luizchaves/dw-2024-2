@@ -39,7 +39,8 @@ Content-Type: application/json
 
 {
   "name": "Cloudflare DNS",
-  "address": "1.1.1.1"
+  "address": "1.1.1.1",
+  "tags": [ "DNS", "Cloudflare"]
 }
 
 ### Update a host without name or address
@@ -64,3 +65,18 @@ DELETE {{server}}/api/hosts/{{createdHostId}}
 
 ### Delete a host with invalid id
 DELETE {{server}}/api/hosts/x
+
+### Create a ping
+POST {{server}}/api/hosts/{{createdHostId}}/pings/3
+
+### Read pings
+GET {{server}}/api/hosts/{{createdHostId}}/pings
+
+### Read tags
+GET {{server}}/api/tags
+
+### Read hosts by tag
+GET {{server}}/api/tags/dns/hosts
+
+### Read pings
+GET {{server}}/api/pings
