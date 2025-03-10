@@ -25,6 +25,10 @@ server.use(express.static('public'));
 
 server.use('/api', router);
 
+server.get('/', (req, res) => {
+  res.redirect('/signin.html');
+});
+
 server.listen(3000, () => {
   console.log('Server is running on port 3000');
 });

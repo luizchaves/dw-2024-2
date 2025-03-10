@@ -107,11 +107,13 @@ router.post(
     const { hostId, count } = req.params;
 
     try {
+      const userId = req.userId;
+
       const host = await Host.readById(hostId);
 
       const pingResult = await ping(host.address, count);
 
-      const createdPing = await Ping.create({ ...pingResult, host });
+      const createdPing = await Ping.create({ ...pingResult, host, userId });
 
       return res.json(createdPing);
     } catch (error) {
