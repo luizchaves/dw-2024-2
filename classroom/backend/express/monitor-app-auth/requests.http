@@ -1,0 +1,148 @@
+@server=http://localhost:3000
+@createdHostId = {{createHost.response.body.$.id}}
+@token = {{signin.response.body.$.token}}
+
+### Create a host
+# @name createHost
+POST {{server}}/api/hosts
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "name": "DNS Server",
+  "address": "1.1.1.1"
+}
+
+### Create a host without name or address
+POST {{server}}/api/hosts
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "name": "DNS Server"
+}
+
+### Read hosts
+GET {{server}}/api/hosts
+Authorization: Bearer {{token}}
+
+### Read a host by name
+GET {{server}}/api/hosts?name=Google%20DNS
+Authorization: Bearer {{token}}
+# GET {{server}}/api/hosts?name=DNS
+# GET {{server}}/api/hosts?name=dns
+
+### Read a host by id
+GET {{server}}/api/hosts/{{createdHostId}}
+Authorization: Bearer {{token}}
+
+### Read a host by id with invalid id
+GET {{server}}/api/hosts/x
+Authorization: Bearer {{token}}
+
+### Update a host
+PUT {{server}}/api/hosts/{{createdHostId}}
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "name": "Cloudflare DNS",
+  "address": "1.1.1.1",
+  "tags": [ "DNS", "Cloudflare"]
+}
+
+### Update a host without name or address
+PUT {{server}}/api/hosts/{{createdHostId}}
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "name": "Cloudflare DNS"
+}
+
+### Update a host with invalid id
+PUT {{server}}/api/hosts/x
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "name": "Cloudflare DNS",
+  "address": "1.1.1.1"
+}
+
+### Delete a host
+DELETE {{server}}/api/hosts/{{createdHostId}}
+Authorization: Bearer {{token}}
+
+### Delete a host with invalid id
+DELETE {{server}}/api/hosts/x
+Authorization: Bearer {{token}}
+
+### Create a ping
+POST {{server}}/api/hosts/{{createdHostId}}/pings/3
+Authorization: Bearer {{token}}
+
+### Read pings
+GET {{server}}/api/hosts/{{createdHostId}}/pings
+Authorization: Bearer {{token}}
+
+### Read tags
+GET {{server}}/api/tags
+Authorization: Bearer {{token}}
+
+### Read hosts by tag
+GET {{server}}/api/tags/dns/hosts
+Authorization: Bearer {{token}}
+
+### Read pings
+GET {{server}}/api/pings
+Authorization: Bearer {{token}}
+
+### Create User
+# @name createdUser
+POST {{server}}/api/users
+Content-Type: application/json
+
+{
+  "name": "Luiz",
+  "email": "luiz@email.com",
+  "password": "123"
+}
+
+### Create a user with same email
+POST {{server}}/api/users
+Content-Type: application/json
+
+{
+  "name": "Luiz Carlos",
+  "email": "luiz.carlos@email.com",
+  "password": "123"
+}
+
+### Create a user without email
+POST {{server}}/api/users
+Content-Type: application/json
+
+{
+  "name": "Luiz",
+  "password": "123"
+}
+
+### Signin
+# @name signin
+POST {{server}}/api/signin
+Content-Type: application/json
+
+{
+  "email": "luiz.carlos@email.com",
+  "password": "123"
+}
+
+### Signin 401
+POST {{server}}/api/signin
+Content-Type: application/json
+
+{
+  "email": "luiz@email.com",
+  "password": "321"
+}
